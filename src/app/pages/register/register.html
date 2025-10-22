@@ -1,0 +1,216 @@
+<section class="border-2 border-indigo-800 p-6 w-1/2 mx-auto my-8 rounded-2xl shadow-gray-200 shadow-2xl">
+    <div class="regForm w-[80%] mx-auto">
+        <form class=" my-5" action="" [formGroup]="signUpForm" (ngSubmit)="submit()">
+            <h2 class="gradient-text font-bold underline-offset-2 mb-10 text-3xl text-center">Sign up to Cypermarket</h2>
+
+            <!-- name -->
+            <div class=" relative mb-5">
+                <input
+                formControlName="name"
+                type="text"
+                id="name"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+
+                <label for="name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Name</label>
+
+            </div>
+            <!-- validation -->
+
+            @let nameVal = signUpForm.get('name');
+
+            @if (nameVal?.touched && nameVal?.errors)   {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (nameVal?.getError('required')) {
+
+                                    <li>Name is a required field</li>
+                                }
+                                @if (nameVal?.getError('minlength') || nameVal?.getError('maxlength')) {
+
+                                    <li>Name must be between 3 and 30 characters long.</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+            <!-- email -->
+            <div class="relative mb-5">
+                <input
+                formControlName="email"
+                type="email"
+                id="email"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">E-mail</label>
+            </div>
+
+            <!-- validation -->
+
+            @let emailVal = signUpForm.get('email');
+
+            @if (emailVal?.touched && emailVal?.errors)   {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (emailVal?.getError('required')) {
+
+                                    <li>E-mail is a required field</li>
+                                }
+                                @if (emailVal?.getError('email')) {
+
+                                    <li>Please enter a valid E-mail address</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+
+            <!-- password -->
+            <div class="relative mb-5">
+                <input
+                formControlName="password"
+                [type]="showPass? 'text':'password'"
+                id="password"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="password" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Password</label>
+
+                <span (click)="showPass = !showPass" class="absolute top-1/2 end-5 -translate-y-1/2 cursor-pointer">
+                    @if (showPass) {
+
+                        <i class="fa-solid fa-eye-slash text-indigo-600"></i>
+                    }@else {
+
+                        <i class="fa-solid fa-eye text-indigo-600"></i>
+                    }
+                </span>
+            </div>
+
+            <!-- validation -->
+
+            @let passVal = signUpForm.get('password');
+
+            @if (passVal?.touched && passVal?.errors)   {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (passVal?.getError('required')) {
+
+                                    <li>Password is a required field</li>
+                                }
+                                @if (passVal?.getError('pattern')) {
+
+                                    <li>Password has to be at least 8 characters long</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+
+            <!-- re-pass -->
+            <div class="relative mb-5">
+                <input
+                formControlName="rePassword"
+                [type]="showRePass? 'text':'password'"
+                id="confirmPassword"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="confirmPassword" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Confirm password</label>
+
+                <span (click)="showRePass = !showRePass" class="absolute top-1/2 end-5 -translate-y-1/2 cursor-pointer">
+                    @if (showRePass) {
+
+                        <i class="fa-solid fa-eye-slash text-indigo-600"></i>
+                    }@else {
+
+                        <i class="fa-solid fa-eye text-indigo-600"></i>
+                    }
+                </span>
+            </div>
+
+            <!-- validation -->
+
+            @if (signUpForm.get('rePassword')?.touched && signUpForm.getError('mismatch'))   {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                <li>Incorrect password</li>
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+
+            <!-- phone -->
+
+            <div class="relative mb-5">
+                <input
+                formControlName="phone"
+                type="tel"
+                id="phone"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="phone" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone Number</label>
+            </div>
+
+            <!-- validation -->
+
+            @let phoneVal = signUpForm.get('phone');
+
+            @if (phoneVal?.touched && phoneVal?.errors)   {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (phoneVal?.getError('required')) {
+
+                                    <li>Phone number is a required field</li>
+                                }
+                                @if (phoneVal?.getError('pattern')) {
+
+                                    <li>Please enter a valid Egyptian phone number</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+            @if (errMsg) {
+
+                <h3 class="text-red-800 font-medium text-2xl text-center mb-4">{{errMsg}}.</h3>
+            }
+
+            @if (isRegistered == 'success') {
+                <h3 class="text-green-700 font-medium text-2xl text-center mb-4">Account created successfully
+                    <i class="fa-light fa-check"></i>
+                </h3>
+            }
+
+            <div class="below-form flex flex-col items-center gap-3">
+                <!-- Button always on top -->
+                <button
+                    [disabled]="isLoading"
+                    class="disabled:cursor-wait w-1/2 relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:outline-none">
+                    <span class="w-full text-xl relative px-5 py-2.5 transition-all ease-in duration-75 text-indigo-600 hover:text-white bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+                        Sign up
+                            <i class="fa-solid fa-cart-shopping text-lg" [ngClass]="{ 'animate-spin': isLoading }" ></i>
+                    </span>
+                </button>
+
+                <!-- Links wrapper -->
+                <div class="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 sm:justify-center">
+                    <p class="text-center">
+                        Already have an account?
+                        <a routerLink="/login" class="text-indigo-600 hover:border-b-2">Sign in</a>
+                    </p>
+
+                </div>
+            </div>
+
+
+
+
+        </form>
+
+    </div>
+
+</section>

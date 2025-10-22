@@ -1,0 +1,116 @@
+
+
+<nav class="bg-gradient-to-br from-blue-50 to-purple-50 border-gray-200 dark:from-gray-900 dark:to-gray-950">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+
+        <!-- logo -->
+        <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <i class="fa-solid fa-laptop-code text-5xl
+            bg-gradient-to-r from-purple-600 to-blue-500
+            dark:from-violet-400 dark:to-blue-300
+            text-transparent bg-clip-text">
+        </i>
+            <span routerLink="/home" class="self-center text-2xl font-semibold whitespace-nowrap text-blue-700 dark:text-blue-400">CyperMarket</span>
+        </a>
+
+        <!-- drop down menu -->
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
+        </button>
+
+        <!-- navbar content (icons- links) -->
+        <div class="hidden w-full grow md:flex md:w-auto" id="navbar-default">
+
+            <!-- main layout -->
+            @if (isLogin=== true) {
+
+                <ul class="font-medium ms-8 flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
+
+                <li>
+                <a  routerLink="/home"
+                    routerLinkActive="bg-gradient-to-br from-blue-100 to-purple-100 dark:bg-gradient-to-br dark:from-gray-600 dark:to-gray-700"
+                    class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Home</a>
+                </li>
+
+                <li>
+                <a  routerLink="/cart"
+                    routerLinkActive="bg-gradient-to-br from-blue-100 to-purple-100 dark:bg-gradient-to-br dark:from-gray-600 dark:to-gray-700" class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Cart <i class="fa-solid fa-bag-shopping"></i></a>
+                </li>
+
+                <li>
+                <a  routerLink="/products"
+                    routerLinkActive="bg-gradient-to-br from-blue-100 to-purple-100 dark:bg-gradient-to-br dark:from-gray-600 dark:to-gray-700" class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Products</a>
+                </li>
+
+                <li>
+                <a  routerLink="/categories"
+                    routerLinkActive="bg-gradient-to-br from-blue-100 to-purple-100 dark:bg-gradient-to-br dark:from-gray-600 dark:to-gray-700" class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Categories</a>
+                </li>
+
+                <li>
+                <a  routerLink="/brands"
+                    routerLinkActive="bg-gradient-to-br from-blue-100 to-purple-100 dark:bg-gradient-to-br dark:from-gray-600 dark:to-gray-700" class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Brands</a>
+                </li>
+            </ul>
+            }
+
+            <!-- social icons -->
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border ms-auto border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
+
+                <li class="flex items-center space-x-2">
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm md:border-0 md:p-0 dark:text-gray-200">
+                        <i class="fa-brands fa-facebook text-2xl hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500
+                                hover:text-transparent hover:bg-clip-text">
+                        </i>
+                    </a>
+
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm md:border-0 md:p-0 dark:text-gray-200">
+                        <i class="fa-brands fa-instagram text-2xl hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500
+                                hover:text-transparent hover:bg-clip-text">
+                        </i>
+                    </a>
+
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm md:border-0 md:p-0 dark:text-gray-200">
+                        <i class="fa-brands fa-x-twitter text-2xl hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500
+                                hover:text-transparent hover:bg-clip-text">
+                        </i>
+                    </a>
+
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm md:border-0 md:p-0 dark:text-gray-200">
+                        <i class="fa-brands fa-youtube text-2xl hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500
+                                hover:text-transparent hover:bg-clip-text">
+                        </i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- auth-layout -->
+            <ul class="font-medium ms-8 flex flex-col p-4 md:p-0 mt-4 border  border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
+                @if (isLogin=== false) {
+                    <li>
+                    <a  routerLink="/login"
+                        class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Login</a>
+                    </li>
+
+                    <li>
+                    <a  routerLink="/register"
+                        class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Sign Up</a>
+                    </li>
+                }@else {
+
+                    <li>
+                    <a
+                    (click)="signOut()"
+                        class="block py-2 px-3 text-blue-700 rounded-sm md:border-0 hover:cursor-pointer hover:bg-gradient-to-br from-blue-100 to-purple-100  md:p-1 dark:text-blue-400 md:dark:hover:bg-gradient-to-br dark:hover:from-gray-600 dark:hover:to-gray-700">Sign Out</a>
+                    </li>
+
+                }
+
+
+            </ul>
+        </div>
+    </div>
+</nav>

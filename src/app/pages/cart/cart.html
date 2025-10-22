@@ -1,0 +1,73 @@
+<section class="container">
+    <div class="main-grid grid sm:grid-cols-12 items-start gap-3">
+
+        <div class="cart-items col-span-8 bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-xl shadow">
+
+            <div class="flex justify-between mb-4 pb-2 items-end border-b-2 border-b-gray-400">
+                <div class="flex items-end space-x-3   ">
+                <h1 class="text-5xl text-blue-700 font-semibold">Your Cart</h1>
+                <span class="text-xl text-violet-700 italic">{{userCartDetails.products.length}} items</span>
+                </div>
+
+                <button (click)="clearUserCart()"
+                type="button" class="main-btn text-sm">Clear My Cart</button>
+            </div>
+
+            @if (userCartDetails.products.length === 0) {
+                <div class="text-center p-10">
+                    <p class="my-3  text-4xl font-medium text-blue-700">Your cart is empty!</p>
+                    <button routerLink="/home" class="main-btn text-2xl">Continue shopping</button>
+                </div>
+            }
+
+            @for (item of userCartDetails.products; track $index) {
+
+                <div class="item p-2 bg-gradient-to-r from-purple-50 to-blue-50 mb-3 rounded-lg shadow shadow-gray-400 ">
+                    <div class="inner-grid grid sm:grid-cols-12 space-x-4">
+
+                    <div class="col-span-1">
+                        <img [src]="item.product.imageCover" class="w-full" [alt]="item.product.title">
+                    </div>
+
+                    <div class="col-span-11 flex justify-between items-center">
+
+                        <div class="left">
+                            <h3 class="text-2xl text-violet-800 mb-2">{{item.product.title}}</h3>
+
+                            <div class="counter-plus-remove flex items-center space-x-5">
+
+                                <div class="counter px-3 py-1 border border-blue-800 rounded-lg flex justify-center items-center space-x-4">
+                                    <button (click)="updateItemCount(item.product._id, item.count-1)" class="cursor-pointer hover:text-blue-700"><i class="fa-solid fa-minus"></i></button>
+                                    <span>{{item.count}}</span>
+                                    <button (click)="updateItemCount(item.product._id,item.count + 1)" class="cursor-pointer hover:text-blue-700"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                                <button (click)="removeCartItem(item.product._id, item.product.title)" class="cursor-pointer">
+                                    <i class="fa-solid fa-trash hover:text-red-600 "></i>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div class="right">
+                            <span>{{ item.count * item.price | currency: 'EGP':'code' }}</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            }
+
+        </div>
+
+
+        <div class="order-summary col-span-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl shadow p-5">
+            <h2 class="text-3xl text-violet-800 font-semibold">Order Summary</h2>
+            <div class="flex justify-between my-5">
+                <span>Total Price</span>
+                <span>{{userCartDetails.totalCartPrice | currency: 'EGP':'code'}}</span>
+            </div>
+            <button
+                [disabled]="userCartDetails.products.length === 0"
+                [routerLink]="['/checkout', userCartDetails._id]" type="button" class="main-btn w-full text-2xl">Proceed To Checkout</button>
+        </div>
+    </div>
+</section>

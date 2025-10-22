@@ -1,0 +1,106 @@
+<section class="border-2 border-indigo-800 p-6 w-1/2 mx-auto my-8 rounded-2xl shadow-gray-200 shadow-2xl">
+    <div class="regForm w-[80%] mx-auto">
+        <form class=" my-5" action="" [formGroup]="checkoutForm" (ngSubmit)="submitCheckOut()" >
+            <h2 class="gradient-text font-bold underline-offset-2 mb-10 text-3xl text-center">Check out to complete your order</h2>
+
+            <div class="" formGroupName="shippingAddress">
+
+                <textarea formControlName="details" id="message" rows="4" class="mb-4  block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-600 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your details here..."></textarea>
+
+            <!-- validation -->
+
+            @let detailsVal = checkoutForm.get('shippingAddress')?.get('details');
+
+            @if (detailsVal?.touched && detailsVal?.errors){
+
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (detailsVal?.getError('required')) {
+
+                                    <li>Details is a required field</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+
+            <!-- phone -->
+            <div class="relative mb-5">
+                <input
+                formControlName="phone"
+                type="tel"
+                id="phone"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="phone" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Phone</label>
+            </div>
+
+            @let phoneVal = checkoutForm.get('shippingAddress')?.get('phone');
+
+            @if (phoneVal?.touched && phoneVal?.errors)  {
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (phoneVal?.getError('required')) {
+
+                                    <li>Phone number is a required field</li>
+                                }
+                                @if (phoneVal?.getError('pattern')) {
+
+                                    <li>Please enter a valid Egyptian phone number</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+
+            <!-- city -->
+            <div class="relative mb-5">
+                <input
+                formControlName="city"
+                type="text"
+                id="city"
+                class=" block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer" placeholder="" />
+                <label for="city" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-gray-50 dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">City</label>
+            </div>
+
+            <!-- val -->
+
+            @let cityVal = checkoutForm.get('shippingAddress')?.get('city');
+
+            @if (cityVal?.touched && cityVal?.errors){
+
+                    <div class="flex p-2 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                        <div>
+                            <ul class="mt-1.5 list-disc list-inside">
+                                @if (cityVal?.getError('required')) {
+
+                                    <li>City is a required field</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+            }
+            </div>
+
+            @if (checkoutForm.dirty && checkoutForm.invalid) {
+
+                <p class="text-red-800 mb-5 font-medium italic text-center">Write valid data in order to navigate to your selected payment method</p>
+            }
+            <h3 class="text-2xl text-blue-800 font-semibold mb-4">Choose a payment method:</h3>
+            <div class="buttons flex justify-around">
+                <button (click)="setPaymentMethod('cod')" type="submit" class="main-btn text-2xl hover:rotate-[360deg] transition-all duration-500">Cash on delivery (COD)</button>
+                <button (click)="setPaymentMethod('visa')" type="submit" class="main-btn text-2xl hover:rotate-[360deg] transition-all duration-500">Visa/Credit Card</button>
+            </div>
+
+
+
+
+
+
+        </form>
+
+    </div>
+
+</section>

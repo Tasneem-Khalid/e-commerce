@@ -1,0 +1,16 @@
+<section class="carousel container">
+
+    <owl-carousel-o [options]="categoriesSliderOptions">
+
+        @for (category of categoryList; track category._id) {
+        <ng-template carouselSlide [id]="category._id">
+            <div class="border border-violet-900 rounded p-2">
+                <img [src]="category.image" class="w-full h-[300px] rounded" [alt]="category.slug">
+                <h2 class="gradient-text text-3xl text-center"> {{category.name}}</h2>
+            </div>
+        </ng-template>
+
+        }
+
+    </owl-carousel-o>
+</section>

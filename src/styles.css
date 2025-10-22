@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+body{
+    @apply dark:bg-gray-800 bg-gray-50
+}
+
+.container{
+
+    @apply max-w-7xl mx-auto my-10
+}
+
+.gradient-text{
+    @apply  bg-gradient-to-r from-blue-800 to-violet-300 text-transparent bg-clip-text tracking-tight dark:bg-gradient-to-r dark:from-blue-300 dark:to-violet-900
+}
+
+.main-btn{
+    @apply text-white bg-gradient-to-br from-purple-500 to-blue-400 hover:bg-gradient-to-bl cursor-pointer font-medium rounded-lg px-4 py-1.5 text-center me-2 mb-2 disabled:from-purple-700 disabled:to-blue-600 disabled:cursor-not-allowed
+}

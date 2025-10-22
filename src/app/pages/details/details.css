@@ -1,0 +1,3 @@
+.gradient-text{
+    @apply  bg-gradient-to-r from-blue-800 to-violet-300 text-transparent bg-clip-text tracking-tight dark:bg-gradient-to-r dark:from-blue-300 dark:to-violet-900
+}
