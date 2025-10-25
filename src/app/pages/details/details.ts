@@ -33,9 +33,7 @@ export class Details implements OnInit{
     this.activatedRoute.paramMap.subscribe(
       {
         next: (params)=> {
-          console.log('urlparams',params);
           this.productId= params.get('id')
-          console.log(this.productId);
         }
       }
     )
@@ -45,12 +43,8 @@ export class Details implements OnInit{
 
     this.specificProduct.getSpecificProduct(this.productId).subscribe({
       next:(res)=>{
-        console.log('speciic product:', res.data);
         this.productDetails= res.data
 
-      },
-      error:(err)=>{
-        console.log(err);
       }
     })
   }
@@ -63,14 +57,10 @@ export class Details implements OnInit{
 
           next:(res)=>{
 
-            console.log('deets add to cart',res);
           if(res.status === 'success'){
             this.toastr.success(res.message, 'CyperMarket')
           }
 
-          },
-          error: (err)=>{
-            console.log('deets cart err', err);
           }
             })
   

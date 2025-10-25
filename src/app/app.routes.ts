@@ -15,6 +15,7 @@ import { authGuard } from './core/guards/auth-guard';
 import { loggedInGuard } from './core/guards/logged-in-guard';
 import { AllOrders } from './pages/all-orders/all-orders/all-orders';
 import { ForgetPassword } from './pages/forget-password/forget-password';
+import { CashOrder } from './pages/cash-order/cash-order/cash-order';
 
 export const routes: Routes = [
 
@@ -32,6 +33,7 @@ export const routes: Routes = [
         {path: 'brands', component:Brands, title: 'Brands'},
         {path: 'categories', component:Categories, title: 'Categories'},
         {path: 'allorders', component:AllOrders, title: 'All Orders'},
+        {path: 'cod', component:CashOrder, title: 'Cash Order'},
         {path: 'details/:id', component:Details, title: 'Details'},
         {path: 'checkout/:cartId', component:Checkout, title: 'Checkout'}
     ]},

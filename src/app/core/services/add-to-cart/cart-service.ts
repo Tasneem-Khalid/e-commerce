@@ -49,4 +49,8 @@ export class CartService {
 
   }
 
+  getUserOrders(userId:string):Observable<any>{
+
+    return this.http.get(environment.baseUrl + `orders/user/${userId}`)
+  }
 }

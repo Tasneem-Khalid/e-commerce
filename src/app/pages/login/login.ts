@@ -52,7 +52,6 @@ export class Login implements OnInit{
           }
         },
         error: (err)=>{
-          console.log(err);
           this.errMsg = err.error.message
           this.isLoading=false
         }

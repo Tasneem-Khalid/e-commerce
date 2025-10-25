@@ -1,7 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../../core/services/add-to-cart/cart-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout',
@@ -11,6 +12,8 @@ import { CartService } from '../../core/services/add-to-cart/cart-service';
 })
 export class Checkout implements OnInit{
   activatedRoute= inject(ActivatedRoute)
+  private readonly router = inject(Router)
+  private readonly toastr = inject(ToastrService)
   cartId:string|null=null
   paymentMethod:string= ''
   setPaymentMethod(method:string){
@@ -52,20 +55,16 @@ export class Checkout implements OnInit{
 
     if(this.checkoutForm.valid){
 
-      console.log(this.checkoutForm.value);
-      console.log(this.cartId);
+
       
       if(this.paymentMethod=== 'visa'){
 
         this.cartservice.checkoutSession(this.cartId, this.checkoutForm.value).subscribe({
   
           next:(res)=>{
-            console.log(res);
             if(res.status==='success'){
               window.open(res.session.url,'_self')
             }
-          },
-          error:(err)=>{ console.log(err);
           }
         })
       }
@@ -74,14 +73,11 @@ export class Checkout implements OnInit{
         this.cartservice.cashOrder(this.cartId, this.checkoutForm.value).subscribe({
 
           next:(res)=>{
-            console.log('cod  ', res);
-            
-          },
 
-          error:(err)=>{
-
-            console.log(err);
-            
+            if (res.status === 'success') {
+              this.router.navigate(['/cod'] );
+              this.toastr.success('Your Order Has Been Placed Successfully', 'CyperMarket')
+            }
           }
         })
       }

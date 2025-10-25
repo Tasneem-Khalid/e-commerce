@@ -40,17 +40,12 @@ constructor(private readonly flowbiteService: FlowbiteService) {}
   allProductsData(pageNum:number = 1):void{
     this.allProductsService.getAllProducts(pageNum).subscribe({
       next:(res) =>{
-        console.log( 'products', res);
 
         this.productList = res.data
         this.pageSize = res.metadata.limit
         this.p = res.metadata.currentPage
         this.total= res.results
 
-
-      },
-      error:(err)=> {
-        console.log(err);
 
       }
     })
@@ -67,14 +62,10 @@ constructor(private readonly flowbiteService: FlowbiteService) {}
 
       next:(res)=>{
 
-        console.log('add to cart',res);
           if(res.status === 'success'){
             this.toastr.success(res.message, 'CyperMarket')
           }
 
-      },
-      error: (err)=>{
-        console.log('cart err', err);
       }
         })
 

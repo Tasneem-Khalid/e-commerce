@@ -52,12 +52,7 @@ export class CategoriesCarousel implements OnInit{
     this.allCategoriesService.getAllCategories().subscribe({
 
       next: (res)=>{
-        console.log('categories',res);
         this.categoryList = res.data
-
-      },
-      error: (err)=>{
-        console.log(err);
 
       }
     })

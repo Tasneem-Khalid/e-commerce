@@ -50,7 +50,6 @@ export class ForgetPassword implements OnInit{
       this.authService.verifyUserEmail(this.verifyEmail.value).subscribe({
         next:(res)=>{
 
-          console.log(res);
           this.steps=2
         }
       })
@@ -65,7 +64,6 @@ export class ForgetPassword implements OnInit{
       this.authService.verifyOTP(this.verifyCode.value).subscribe({
         next:(res)=>{
 
-          console.log(res);
           this.steps=3
         }
       })
@@ -80,7 +78,6 @@ export class ForgetPassword implements OnInit{
       this.authService.resetUserPassword(this.resetPassword.value).subscribe({
         next:(res)=>{
 
-          console.log(res);
           this.router.navigate(['/home'])
         }
       })

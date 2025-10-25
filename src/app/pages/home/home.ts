@@ -34,13 +34,8 @@ constructor(private readonly flowbiteService: FlowbiteService) {}
   allProductsData():void{
     this.allProductsService.getAllProducts().subscribe({
       next:(res) =>{
-        console.log( 'products', res);
 
         this.productList = res.data
-
-      },
-      error:(err)=> {
-        console.log(err);
 
       }
     })
@@ -54,14 +49,10 @@ constructor(private readonly flowbiteService: FlowbiteService) {}
 
         next:(res)=>{
 
-          console.log('add to cart',res);
           if(res.status === 'success'){
             this.toastr.success(res.message, 'CyperMarket')
           }
 
-        },
-        error: (err)=>{
-          console.log('cart err', err);
         }
           })
 

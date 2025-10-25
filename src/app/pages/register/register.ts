@@ -48,7 +48,6 @@ export class Register implements OnInit{
 
         next: (res)=>{
           this.errMsg=''
-          console.log(res);
           this.isRegistered = res.message
           if(res.message === 'success'){
             setTimeout(() => {
@@ -57,7 +56,6 @@ export class Register implements OnInit{
           }
         },
         error: (err)=>{
-          console.log(err);
           this.errMsg = err.error.message
           this.isLoading=false
         }

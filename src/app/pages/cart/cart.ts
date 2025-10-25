@@ -27,12 +27,7 @@ export class Cart implements OnInit{
     this.cartService.loggedUserCart().subscribe({
 
       next: (res)=>{
-        console.log("cart",res.data);
         this.userCartDetails = res.data
-
-      },
-      error: (err)=>{
-        console.log(err);
 
       }
     })
@@ -43,14 +38,11 @@ export class Cart implements OnInit{
     this.cartService.removeCartItem(itemId).subscribe({
 
       next:(res)=>{
-        console.log(res);
         this.userCartDetails = res.data
         if(res.status=== 'success'){
 
           this.toastr.success(`${itemName} has been removed successfully from your cart`, 'CyperMarket')
         }
-      },
-      error: (err)=>{console.log(err);
       }
     })
   }
@@ -60,12 +52,7 @@ export class Cart implements OnInit{
     this.cartService.updateCartItemCount(itemId,count).subscribe({
 
       next:(res)=>{
-        console.log(res);
         this.userCartDetails= res.data
-      },
-      error:(err)=>{
-        console.log(err);
-        
       }
     })
   }
@@ -75,11 +62,8 @@ export class Cart implements OnInit{
     this.cartService.clearCart().subscribe({
 
       next:(res)=>{
-        console.log('clearcart',res);
         this.getLoggedUserCart()
         this.toastr.success("Your cart has been cleared", "CyperMarket")
-      },
-      error:(err)=>{console.log("clear err", err);
       }
 
     })

@@ -1,1 +1,53 @@
-<p>all-orders works!</p>
+<section class="container">
+
+    <div class=" p-2 bg-gradient-to-r from-purple-50 to-blue-50 mb-3 rounded-lg shadow shadow-gray-400 ">
+                <div class="main-grid grid sm:grid-cols-12 space-x-4  my-3 text-center">
+
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Order number</h3>
+                    </div>
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Order ID</h3>
+                    </div>
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Created At</h3>
+                    </div>
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Cart Items</h3>
+                    </div>
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Payment Method</h3>
+                    </div>
+                    <div class="col-span-2">
+                        <h3 class="font-semibold text-indigo-700 text-2xl">Total Price</h3>
+                    </div>
+
+                </div>
+
+                @for (order of userOrders; track $index) {
+                    <div class="main-grid grid sm:grid-cols-12 space-x-4  my-3 text-center">
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{$index+1}}</h3>
+                        </div>
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{order.id}}</h3>
+                        </div>
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{order.createdAt}}</h3>
+                        </div>
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{order.cartItems.length}}</h3>
+                        </div>
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{order.paymentMethodType}}</h3>
+                        </div>
+                        <div class="col-span-2">
+                            <h3 class="font-medium text-blue-900 text-xl">{{order.totalOrderPrice}}</h3>
+                        </div>
+    
+    
+                    </div>
+
+                }
+                </div>
+</section>
