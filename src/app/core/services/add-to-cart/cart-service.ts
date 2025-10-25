@@ -40,7 +40,7 @@ export class CartService {
   }
 
   checkoutSession(cartId:string|null, checkoutForm:object):Observable<any>{
-    return this.http.post(environment.baseUrl + `orders/checkout-session/${cartId}?url=http://localhost:4200`, checkoutForm)
+    return this.http.post(environment.baseUrl + `orders/checkout-session/${cartId}?url=https://e-commerce-gold-eight-21.vercel.app/`, checkoutForm)
   }
 
   cashOrder(cartId:string|null, checkoutForm:object):Observable<any>{
